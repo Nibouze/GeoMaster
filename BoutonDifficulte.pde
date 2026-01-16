@@ -1,13 +1,10 @@
-// Antonin TEP
-
 class BoutonDifficulte {
   int x, y, largeur, hauteur;
   String titre, description;
   boolean estSelectionne;
   PImage image;
   
-  BoutonDifficulte(int x, int y, int largeur, int hauteur, 
-                   String titre, String description, String cheminImage) {
+  BoutonDifficulte(int x, int y, int largeur, int hauteur, String titre, String description, String cheminImage) {
     this.x = x;
     this.y = y;
     this.largeur = largeur;
@@ -15,48 +12,6 @@ class BoutonDifficulte {
     this.titre = titre;
     this.description = description;
     this.estSelectionne = false;
-    
-    try {
-      this.image = loadImage(cheminImage);
-      if (this.image == null) {
-        this.image = creerImagePlaceholder(200, 150);
-      } else {
-        this.image.resize(200, 0);
-      }
-    } catch (Exception e) {
-      this.image = creerImagePlaceholder(200, 150);
-    }
-  }
-  
-  PImage creerImagePlaceholder(int w, int h) {
-    PImage img = createImage(w, h, RGB);
-    img.loadPixels();
-    
-    for (int i = 0; i < img.pixels.length; i++) {
-      int x = i % w;
-      int y = i / w;
-      
-      if ((x/20 + y/20) % 2 == 0) {
-        img.pixels[i] = color(200);
-      } else {
-        img.pixels[i] = color(150);
-      }
-    }
-    img.updatePixels();
-    
-    PGraphics pg = createGraphics(w, h);
-    pg.beginDraw();
-    pg.image(img, 0, 0);
-    if (modeSombre) {
-      pg.fill(couleursSombre[3]);
-    } else {
-      pg.fill(couleursClair[3]);
-    }
-    pg.textAlign(CENTER, CENTER);
-    pg.text("Image\n" + titre, w/2, h/2);
-    pg.endDraw();
-    
-    return pg;
   }
   
   void afficher() {
@@ -95,28 +50,18 @@ class BoutonDifficulte {
     }
     
     // Titre
-    if (modeSombre) {
-      fill(255); // Blanc en mode sombre
-    } else {
-      fill(30); // Gris foncé en mode clair
-    }
+    if (modeSombre) {fill(255);} else {fill(30);}
     textFont(fontBouton);
     textAlign(CENTER, CENTER);
     
     int titreY;
     if (image != null) {
       titreY = y + 20 + min(150, image.height) + 20;
-    } else {
-      titreY = y + 20 + 150 + 20;
-    }
+    } else titreY = y + 20 + 150 + 20;
     text(titre, x + largeur/2, titreY);
     
     // Description
-    if (modeSombre) {
-      fill(200); // Gris clair en mode sombre
-    } else {
-      fill(100); // Gris moyen en mode clair
-    }
+    if (modeSombre) {fill(255);} else {fill(100);}
     textFont(fontTexte);
     textAlign(CENTER, TOP);
     

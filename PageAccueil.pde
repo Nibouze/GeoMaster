@@ -5,12 +5,10 @@ class PageAccueil extends Page {
   
   PageAccueil(PageManager manager) {
     super(manager);
-    
-    // CORRECTION : Repositionnement avec bouton Apprendre supplémentaire
     int largeurBouton = 300;
     int hauteurBouton = 60;
-    int espacement = 15; // Réduit un peu l'espacement pour 5 boutons
-    int startY = height/2 - 100; // Ajusté pour centrer les 5 boutons
+    int espacement = 15;
+    int startY = height/2 - 100;
     
     btnApprendre = new Bouton(width/2 - largeurBouton/2, startY, largeurBouton, hauteurBouton, "APPRENDRE");
     btnJouer = new Bouton(width/2 - largeurBouton/2, startY + hauteurBouton + espacement, largeurBouton, hauteurBouton, "JOUER");
@@ -21,7 +19,7 @@ class PageAccueil extends Page {
   }
   
   void afficher() {
-    // Appliquer la couleur de fond appropriée
+    // Couleur de fond
     if (modeSombre) {
       fill(couleursSombre[0]);
     } else {
@@ -30,26 +28,22 @@ class PageAccueil extends Page {
     noStroke();
     rect(0, 0, width, height);
     
-    // Titre avec couleur adaptée au mode
+    // Titre
     if (modeSombre) {
-      fill(couleursSombre[3]); // #F375C2 en mode sombre
+      fill(couleursSombre[3]);
     } else {
-      fill(couleursClair[3]); // #769FCD en mode clair
+      fill(couleursClair[3]);
     }
     textFont(fontAccueil);
     textAlign(CENTER, CENTER);
     text("GéoMaster", width/2, height/4 - 80);
     
     // Sous-titre
-    if (modeSombre) {
-      fill(255); // Gris clair pour être lisible sur fond sombre
-    } else {
-      fill(100); // Gris foncé pour être lisible sur fond clair
-    }
+    if (modeSombre) {fill(255);} else {fill(100);}
     textFont(fontSousTitre);
     text("Testez vos connaissances géographiques !", width/2, height/4 - 20);
     
-    // Rectangle décoratif sous le titre
+    // Barre sous titre (rectangle plat)
     noFill();
     if (modeSombre) {
       stroke(couleursSombre[3]); // #F375C2
@@ -60,14 +54,14 @@ class PageAccueil extends Page {
     rect(width/2 - 200, height/4 + 15, 400, 0);
     noStroke();
     
-    // Ajuster les couleurs des boutons selon le mode
+    // Appliquer bouton sélectionné
     for (Bouton btn : new Bouton[]{btnApprendre, btnJouer, btnMode, btnDifficulte, btnQuitter}) {
       if (modeSombre) {
-        btn.couleurFond = couleursSombre[2]; // #B153D7
-        btn.couleurTexte = color(255); // Texte blanc en mode sombre
+        btn.couleurFond = couleursSombre[2];
+        btn.couleurTexte = color(255);
       } else {
-        btn.couleurFond = couleursClair[2]; // #B9D7EA
-        btn.couleurTexte = color(0); // Texte noir en mode clair
+        btn.couleurFond = couleursClair[2];
+        btn.couleurTexte = color(0);
       }
     }
     
@@ -77,15 +71,10 @@ class PageAccueil extends Page {
     btnMode.afficher();
     btnDifficulte.afficher();
     btnQuitter.afficher();
-    
-    // Affichage du bouton de changement de mode
     afficherBoutonMode();
-    
-    // Footer
     afficherFooter();
   }
   
-  // Méthode pour afficher le bouton de changement de mode
   void afficherBoutonMode() {
     // Cadre du bouton
     if (modeSombre) {
@@ -105,13 +94,13 @@ class PageAccueil extends Page {
       fill(couleursSombre[3]);
       textFont(fontTexte);
       textAlign(CENTER, CENTER);
-      text("Clair", width - 60, height - 60);
+      text("Clair", width - 60, height - 50);
     } else {
       image(iconeModeClair, width - 80, height - 90);
       fill(couleursClair[3]);
       textFont(fontTexte);
       textAlign(CENTER, CENTER);
-      text("Sombre", width - 60, height - 60);
+      text("Sombre", width - 60, height - 50);
     }
   }
   

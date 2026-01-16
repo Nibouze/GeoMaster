@@ -1,5 +1,3 @@
-// Antonin TEP
-
 class Bouton {
   int x, y, largeur, hauteur;
   String texte;
@@ -17,7 +15,7 @@ class Bouton {
   }
   
   void afficher() {
-    // Rectangle du bouton
+    // Bouton
     fill(couleurFond);
     if (modeSombre) {
       stroke(couleursSombre[3]); // #F375C2
@@ -27,7 +25,7 @@ class Bouton {
     strokeWeight(2);
     rect(x, y, largeur, hauteur, 10);
     
-    // Texte du bouton
+    // Texte bouton
     fill(couleurTexte);
     noStroke();
     textFont(fontBouton);

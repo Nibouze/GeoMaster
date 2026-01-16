@@ -1,4 +1,3 @@
-// Antonin TEP
 class Page {
   PageManager manager;
   
@@ -6,13 +5,11 @@ class Page {
     this.manager = manager;
   }
   
-  // Méthode pour créer un bouton rectangulaire
   boolean boutonEstClique(int x, int y, int largeur, int hauteur) {
     return mouseX >= x && mouseX <= x + largeur && 
            mouseY >= y && mouseY <= y + hauteur;
   }
   
-  // Méthode pour afficher le footer (adaptée au mode)
   void afficherFooter() {
     // Ligne de séparation
     if (modeSombre) {
@@ -24,11 +21,7 @@ class Page {
     noStroke();
     
     // Texte des auteurs
-    if (modeSombre) {
-      fill(255); // Gris clair pour être lisible
-    } else {
-      fill(100); // Gris foncé
-    }
+    if (modeSombre) {fill(255);} else {fill(100);}
     textFont(fontTexte);
     textAlign(LEFT, BOTTOM);
     text("Groupe 2.2 : TEP Antonin, MADANI Marwan, VALENTINO Enzo", 20, height - 12);
