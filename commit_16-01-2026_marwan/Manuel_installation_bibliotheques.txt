@@ -1,0 +1,7 @@
+Importation de la bibliothèque de son (si pas déja importée) : 
+
+1) Sur le programme main.pde : cliquer en haut sur "Sketch"
+2) Cliquer sur Importer une Bibliothèque -> Manage Libraries... 
+3) Dans la barre de recherche taper "Sound"
+4) Cliquer sur la bibliothèque "Sound" dont l'auteur est "The Processing Foundation"
+5) Installer
